@@ -52,3 +52,5 @@ jobs:
          - name: Run Tests
            run: |
               docker-compose run web python manage.py test
+           env:
+              POSTGRES_PASSWORD: yourpassword
