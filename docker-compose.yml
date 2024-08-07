@@ -4,7 +4,7 @@ services:
    db:
       image: postgres
       environment:
-         POSTGRES_PASSWORD: yourpassword
+         POSTGRES_PASSWORD: $POSTGRES_PASSWORD
 
    web:
       build: .
@@ -15,4 +15,4 @@ services:
       depends_on:
          - db
       environment:
-         POSTGRES_PASSWORD: yourpassword
+         POSTGRES_PASSWORD: $POSTGRES_PASSWORD
