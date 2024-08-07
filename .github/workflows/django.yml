@@ -37,6 +37,8 @@ jobs:
          - name: build docker compose
            run: |
               docker-compose up -d --build
+           env:
+              POSTGRESS_PASSWORD: yourpassword
 
          - name: check docker compose log web
            run: |
