@@ -41,11 +41,11 @@ jobs:
          - name: check docker compose log web
            run: |
               docker-compose ps
-              docker-compose web logs
+              docker-compose logs web
 
          - name: check docker compose log db
            run: |
-              docker-compose db logs
+              docker-compose logs db
 
          - name: Run Tests
            run: |
