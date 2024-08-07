@@ -39,6 +39,8 @@ jobs:
               docker-compose up --build -d
            env:
               POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
+              POSTGRES_NAME: ${{ secrets.POSTGRES_NAME }}
+              POSTGRES_USER: ${{ secrets.POSTGRES_USER }}
 
          - name: check docker compose log web
            run: |
@@ -56,3 +58,5 @@ jobs:
               docker-compose run web python manage.py test
            env:
               POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
+              POSTGRES_NAME: ${{ secrets.POSTGRES_NAME }}
+              POSTGRES_USER: ${{ secrets.POSTGRES_USER }}

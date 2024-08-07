@@ -12,6 +12,11 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 
 import os
 
+import environ
+
+env = environ.Env()
+environ.Env.read_env() # read .env files
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -25,7 +30,7 @@ SECRET_KEY = 'rf(az43up-jxv^%y9_^z!*bkl=vh-7nz*)!5olp!^&675i@k(x'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["0.0.0.0"]
+ALLOWED_HOSTS = ["0.0.0.0", "127.0.0.1"]
 
 
 # Application definition
@@ -78,11 +83,11 @@ WSGI_APPLICATION = 'airline.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'postgres',
-        'USER': 'postgres',
+        'NAME': os.getenv('POSTGRES_NAME', env('POSTGRES_NAME')),
+        'USER': os.getenv('POSTGRES_USER', env('POSTGRES_USER')),
         'HOST': 'db',
         'PORT': 5432,
-        'PASSWORD': os.getenv('POSTGRES_PASSWORD'),
+        'PASSWORD': os.getenv('POSTGRES_PASSWORD', env('POSTGRES_USER')),
     }
 }
 
